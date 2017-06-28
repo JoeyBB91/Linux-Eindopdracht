@@ -23,3 +23,6 @@ runcmd:
   ### Aanpassingen maken aan syslog-ng.conf. ###
   - wget -qO- "MIJN_SCRIPT_OP_GITHUB" | sh
   - /etc/init.d/syslog-ng start
+
+  ### Display the log-file for the user upon first boot. ###
+  cat /var/log/cloud-init-output.log
