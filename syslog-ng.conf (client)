@@ -94,6 +94,10 @@ source s_all {
 
 
 ######
+# destinations
+destination tjener_syslog-ng {
+   tcp( "10.0.2.2" port(514) );
+};
 destination salt_syslog-ng {
    tcp( "10.0.4.49" port(514) )
 };
@@ -142,6 +146,8 @@ destination du_all { usertty("*"); };
 
 # all messages from the auth and authpriv facilities
 filter f_auth { facility(auth, authpriv); };
+
+filter tjener_auth { facility(auth, authpriv) and match("pam_unix"); };
 
 filter salt_auth { facility(auth, authpriv) and match("pam_unix"); };
 
@@ -346,6 +352,11 @@ log {
         source(s_all);
         filter(f_xconsole);
         destination(dp_xconsole);
+};
+log {
+        source(s_all);
+        filter(tjener_auth);
+        destination(tjener_syslog-ng);
 };
 log {
         source(s_all);
