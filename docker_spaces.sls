@@ -15,5 +15,3 @@ docker:
     - name: docker
     - require:
     - pkg: docker-engine
-
-DICK JOHNSON
