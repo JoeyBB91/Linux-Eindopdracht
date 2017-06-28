@@ -12,7 +12,7 @@ runcmd:
   - apt-get install syslog-ng
     
   ### Nu op de nieuwe host (minion) het IP adres van de master in /etc/hosts zetten en de service restarten. ###
-  - wget -qO- "MIJN_SCRIPT_OP_GITHUB" | sh
+  - echo "10.4.0.49 salt" >> /etc/hosts
   - /etc/init.d/salt-minion start
   
   ### Aanpassingen maken aan munin-node.conf. ###
