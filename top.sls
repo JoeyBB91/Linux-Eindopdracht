@@ -1,0 +1,5 @@
+bash:
+  '*':
+    - apache
+    - docker
+    - wordpress
