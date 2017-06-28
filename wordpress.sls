@@ -1,2 +1,2 @@
-echo "docker run wordpress" > /tmp/salt
-  cmd.run: /tmp/salt
+docker run wordpress
+  cmd.run:
