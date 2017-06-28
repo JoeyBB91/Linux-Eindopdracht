@@ -1,0 +1,24 @@
+#cloud-config
+manage_etc_hosts: True
+runcmd:
+  
+  ### Allereerst alle applicaties direct installeren. ###
+  - apt update
+  - apt-get install salt-minion
+  - wget -qO- "https://get.docker.com/" | sh
+  - docker run wordpress
+  - apt-get install apache2
+  - apt-get install munin-node
+  - apt-get install syslog-ng
+    
+  ### Nu op de nieuwe host (minion) het IP adres van de master in /etc/hosts zetten en de service restarten. ###
+  - wget -qO- "MIJN_SCRIPT_OP_GITHUB" | sh
+  - /etc/init.d/salt-minion start
+  
+  ### Aanpassingen maken aan munin-node.conf. ###
+  - wget -qO- "MIJN_SCRIPT_OP_GITHUB" | sh
+  - /etc/init.d/munin-node start
+  
+  ### Aanpassingen maken aan syslog-ng.conf. ###
+  - wget -qO- "MIJN_SCRIPT_OP_GITHUB" | sh
+  - /etc/init.d/syslog-ng start
