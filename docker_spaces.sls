@@ -14,4 +14,4 @@ docker:
   service.running:  
     - name: docker
     - require:
-    - pkg: docker-engine
+      - pkg: docker-engine
