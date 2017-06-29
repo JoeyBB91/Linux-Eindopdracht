@@ -1,4 +1,5 @@
 #cloud-config
+hostname: salt
 manage_etc_hosts: True
 runcmd:
   
