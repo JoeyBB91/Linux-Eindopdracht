@@ -4,7 +4,6 @@ manage_etc_hosts: True
 runcmd:
   
   ### Eerste de repositories updaten. ###
-  - echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /srv/salt/docker.list
   - apt update
   
   ### Alles installeren. ###
@@ -16,6 +15,7 @@ runcmd:
   - apt-get install -y apache2-utils 
   - apt-get install -y munin
   - apt-get install -y syslog-ng
+  - wget -qO- "https://get.docker.com/" | sh
   
   ### Repository offline beschikbaar houden. ###
   - git clone "https://github.com/JoeyBB91/Linux-Eindopdracht" /tmp/Linux-Eindopdracht
@@ -24,6 +24,7 @@ runcmd:
   ### De master aanwijzen in /etc/hosts en de service starten. ###
   - IP_MASTER="$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)"
   - echo "$IP_MASTER salt" >> /etc/hosts
+  - echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /srv/salt/docker.list
   - /etc/init.d/salt-minion start
   
   ### Nu de master initialiseren. Eerst syslog-ng. ###
