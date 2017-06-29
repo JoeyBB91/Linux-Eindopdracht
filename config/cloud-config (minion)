@@ -3,6 +3,7 @@ hostname: salt-minion
 manage_etc_hosts: True
 runcmd:
   
+  - IP_MASTER="$(10.4.0.57)"
   ### Eerste de repositories updaten. ###
   - apt update
   
@@ -10,7 +11,7 @@ runcmd:
   - apt-get install -y salt-minion
   
   ### De master aanwijzen in /etc/hosts en de service herstarten. ###
-  - echo "10.4.0.49 salt" >> /etc/hosts
+  - echo "$IP_MASTER salt" >> /etc/hosts
   - /etc/init.d/salt-minion start
 
   ### Display the log-file for the user upon first boot. ###
