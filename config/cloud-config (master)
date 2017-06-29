@@ -19,7 +19,7 @@ runcmd:
   
   ### Repository offline beschikbaar houden. ###
   - git pull "https://github.com/JoeyBB91/Linux-Eindopdracht" /tmp/Linux-Eindopdracht
-  - mv /tmp/Linux-Eindopdracht/srv* /srv
+  - mv /tmp/Linux-Eindopdracht/srv/* /srv
   
   ### De master aanwijzen in /etc/hosts en de service starten. ###
   - IP_MASTER="$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)"
