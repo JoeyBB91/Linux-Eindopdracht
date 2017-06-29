@@ -1,4 +1,5 @@
 #cloud-config
+hostname: salt-minion
 manage_etc_hosts: True
 runcmd:
   
