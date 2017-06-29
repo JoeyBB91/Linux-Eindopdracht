@@ -1,5 +1,5 @@
 #!/bin/bash
-path=/var/log/debian-edu
+path=/var/log/syslog-ng
 rmdate=`date --date '-30 days' +%Y%m%d` 		# date for remove
 declare -i rmdate 					# convert rmdate to integer
 #
