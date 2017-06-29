@@ -24,7 +24,7 @@ runcmd:
   
   ### De master aanwijzen in /etc/hosts en de service starten. ###
   - IP_MASTER="$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)"
-  - echo $IP_MASTER >> /etc/hosts
+  - echo "$IP_MASTER salt" >> /etc/hosts
   - /etc/init.d/salt-minion start
   
   ### Nu de master initialiseren. Eerst syslog-ng. ###
