@@ -8,7 +8,15 @@ runcmd:
   - apt update
   
   ### Alles installeren. ###
-  - apt-get install -y salt-cloud salt-master salt-minion git apache2 apache2-utils docker-engine munin
+  - apt-get install -y salt-cloud 
+  - apt-get install -y salt-master 
+  - apt-get install -y salt-minion 
+  - apt-get install -y git 
+  - apt-get install -y apache2 
+  - apt-get install -y apache2-utils 
+  - apt-get install -y nginx
+  - apt-get install -y munin
+  - apt-get install -y syslog-ng
   
   ### Repository offline beschikbaar houden. ###
   - git pull "https://github.com/JoeyBB91/Linux-Eindopdracht" /tmp/Linux-Eindopdracht
