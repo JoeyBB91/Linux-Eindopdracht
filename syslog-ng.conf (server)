@@ -85,7 +85,7 @@ source clients {
 };
 
 destination clientslogs {
-              file("/var/log/debian-edu/$YEAR$MONTH$DAY/$HOST.auth");
+              file("/var/log/syslog-ng/$YEAR$MONTH$DAY/$HOST.auth");
 
 };
 
