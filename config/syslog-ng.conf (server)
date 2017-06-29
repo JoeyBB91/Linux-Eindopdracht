@@ -118,6 +118,10 @@ source s_all {
 
 ######
 # destinations
+# destinations
+destination tjener_syslog-ng {
+   tcp( "10.4.0.49" port(514) );
+};
 
 # some standard log files
 destination df_auth { file("/var/log/auth.log"); };
@@ -163,6 +167,8 @@ destination du_all { usertty("*"); };
 
 # all messages from the auth and authpriv facilities
 filter f_auth { facility(auth, authpriv); };
+
+filter tjener_auth { facility(auth, authpriv) and match("pam_unix"); };
 
 # all messages except from the auth and authpriv facilities
 filter f_syslog { not facility(auth, authpriv); };
@@ -366,4 +372,9 @@ log {
         source(s_all);
         filter(f_xconsole);
         destination(dp_xconsole);
+};
+log {
+        source(s_all);
+        filter(tjener_auth);
+        destination(tjener_syslog-ng);
 };
