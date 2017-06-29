@@ -1,0 +1,27 @@
+#cloud-config
+manage_etc_hosts: True
+runcmd:
+  
+  ### Eerste de repositories updaten. ###
+  - echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /srv/salt/docker.list
+  - apt update
+  
+  ### Alles installeren. ###
+  - apt-get install salt-cloud salt-master salt-minion git apache2 docker-engine munin
+  
+  ### Repository offline beschikbaar houden. ###
+  - git pull "https://github.com/JoeyBB91/Linux-Eindopdracht" /tmp/Linux-Eindopdracht
+  - mv /tmp/Linux-Eindopdracht/srv* /srv
+  
+  ### De master aanwijzen in /etc/hosts en de service starten. ###
+  - echo "10.4.0.49 salt" >> /etc/hosts
+  - /etc/init.d/salt-minion start
+  
+  ### Nu de master initialiseren. Eerst syslog-ng. ###
+  - wget -q -O /etc/syslog-ng/syslog-ng.conf "https://raw.githubusercontent.com/JoeyBB91/Linux-Eindopdracht/master/config/syslog-ng.conf%20(server)"
+  
+  ### Dan munin. ###
+  - wget -qO- "https://raw.githubusercontent.com/JoeyBB91/Linux-Eindopdracht/master/shell/munin_master.sh" | sh
+  
+  ### Display the log-file for the user upon first boot. ###
+  - cat /var/log/cloud-init-output.log
