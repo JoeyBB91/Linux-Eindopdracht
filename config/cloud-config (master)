@@ -30,7 +30,7 @@ runcmd:
   - wget -q -O /etc/syslog-ng/syslog-ng.conf "https://raw.githubusercontent.com/JoeyBB91/Linux-Eindopdracht/master/config/syslog-ng.conf%20(server)"
   
   ### Dan munin. ###
-  - wget -qO- "https://raw.githubusercontent.com/JoeyBB91/Linux-Eindopdracht/master/shell/munin_master.sh" | sh
+  - wget -q -O /etc/munin/munin.conf "https://raw.githubusercontent.com/JoeyBB91/Linux-Eindopdracht/master/config/munin.conf"
   
   ### Display the log-file for the user upon first boot. ###
   - cat /var/log/cloud-init-output.log
