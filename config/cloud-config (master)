@@ -14,7 +14,6 @@ runcmd:
   - apt-get install -y git 
   - apt-get install -y apache2 
   - apt-get install -y apache2-utils 
-  - apt-get install -y nginx
   - apt-get install -y munin
   - apt-get install -y syslog-ng
   
