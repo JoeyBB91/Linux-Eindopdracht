@@ -15,7 +15,8 @@ runcmd:
   - apt-get install -y apache2-utils 
   - apt-get install -y munin
   - apt-get install -y syslog-ng
-  - wget -qO- "https://get.docker.com/" | sh
+  - curl -fsSL get.docker.com -o get-docker.sh
+  - sh get-docker.sh
   
   ### Repository offline beschikbaar houden. ###
   - git clone "https://github.com/JoeyBB91/Linux-Eindopdracht" /tmp/Linux-Eindopdracht
