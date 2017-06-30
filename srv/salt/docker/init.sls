@@ -1,2 +1,2 @@
-wget -qO- https://raw.githubusercontent.com/JoeyBB91/Linux-Eindopdracht/master/shell/dockersh.sh | sh:
+wget -qO- "get.docker.com" | sh:
   cmd.run
